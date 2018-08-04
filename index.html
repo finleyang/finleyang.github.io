@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Finleyang's Blogs" type="application/atom+xml" />
+
 
 
 
@@ -500,7 +502,7 @@
 <pre><code>return_type (^block_name) (parameters)
 </code></pre><p>Block表达式语法：^ 返回值类型 (参数列表) {表达式}</p>
 <pre><code>^int(int a, int b){
-return a+b;
+    return a+b;
 };
 </code></pre><p>其中可省略部分有：<br>返回类型</p>
 <pre><code>^(int a, int b){
@@ -533,12 +535,12 @@ addBlock(2,5);//17
 </code></pre><p>解决方法：（1）在ARC下：使用__weak</p>
 <pre><code>__weak typeof(self) weakSelf = self;
 self.myBlock = ^(Type var){
-[weakSelf dosomething];
+    [weakSelf dosomething];
 };
 </code></pre><p>(2)MRC下：使用__block</p>
 <pre><code>__block typeof(self) blockSelf = self;
 self.myBlock = ^(Type var){
-[blockSelf dosomething];
+    [blockSelf dosomething];
 };
 </code></pre><p>值得注意⚠️的是在ARC的情况下使用__block也有可能导致循环引用</p>
 <p>六.总结</p>
@@ -639,6 +641,13 @@ self.myBlock = ^(Type var){
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Finleyang's Blogs" type="application/atom+xml" />
+
 
 
 
@@ -87,7 +89,7 @@
 <meta property="og:description" content="概述：在开发应用程序时应留意多线程问题。也许你觉得自己开发中用不到多线程，即便如此它也可能依然是多线程，因为系统框架通常会在UI线程之外另起一些线程来执行任务。开发时最糟糕的事情莫过于程序因UI线程阻塞而挂起了，这样应用体验会很差。在Mac OS X系统中，这将使鼠标指针一直在旋转，而在iOS系统中，阻塞过久的程序可能会终止。所幸苹果公司以全新的方式设计了多线程。当前多线程的核心就是“块”（blo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2850337-0bc20c1377ddbe57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-30T07:55:36.240Z">
+<meta property="og:updated_time" content="2018-08-04T07:26:33.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解“块”这一概念">
 <meta name="twitter:description" content="概述：在开发应用程序时应留意多线程问题。也许你觉得自己开发中用不到多线程，即便如此它也可能依然是多线程，因为系统框架通常会在UI线程之外另起一些线程来执行任务。开发时最糟糕的事情莫过于程序因UI线程阻塞而挂起了，这样应用体验会很差。在Mac OS X系统中，这将使鼠标指针一直在旋转，而在iOS系统中，阻塞过久的程序可能会终止。所幸苹果公司以全新的方式设计了多线程。当前多线程的核心就是“块”（blo">
@@ -346,7 +348,7 @@
 <pre><code>return_type (^block_name) (parameters)
 </code></pre><p>Block表达式语法：^ 返回值类型 (参数列表) {表达式}</p>
 <pre><code>^int(int a, int b){
-return a+b;
+    return a+b;
 };
 </code></pre><p>其中可省略部分有：<br>返回类型</p>
 <pre><code>^(int a, int b){
@@ -379,12 +381,12 @@ addBlock(2,5);//17
 </code></pre><p>解决方法：（1）在ARC下：使用__weak</p>
 <pre><code>__weak typeof(self) weakSelf = self;
 self.myBlock = ^(Type var){
-[weakSelf dosomething];
+    [weakSelf dosomething];
 };
 </code></pre><p>(2)MRC下：使用__block</p>
 <pre><code>__block typeof(self) blockSelf = self;
 self.myBlock = ^(Type var){
-[blockSelf dosomething];
+    [blockSelf dosomething];
 };
 </code></pre><p>值得注意⚠️的是在ARC的情况下使用__block也有可能导致循环引用</p>
 <p>六.总结</p>
@@ -504,6 +506,13 @@ self.myBlock = ^(Type var){
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
